@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Upload files</title>
+{% endblock %}
+
+{% block body %}
+
+<p> Ciao {{ user.user_username|capitalize }}</p>
+<hr>
+        <h1>Carica l'e immagini del tuo progetto</h1>
+        <hr>
+        
+        <hr>
+
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="nome">
+            <input type="file" name="immagine">
+            <input type="submit" value="Carica progetto">
+        </form>
+
+
+
+
+
+{% endblock %}

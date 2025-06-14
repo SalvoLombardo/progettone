@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Edit section</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Qui puoi editare la tua attività</h1>
+    <hr>
+
+    <div class="container">
+        <div class="content-box">
+            <form method="POST">
+                <label for="nome">Nome progetto:</label>
+                <input type="text" name="name" value="{{ project.project_name }}">
+
+                <label for="category">Categoria:</label>
+                <input type="text" name="category" value="{{ project.project_category }}">
+
+                <label for="description">Descrizione:</label>
+                <input type="text" name="description" value="{{ project.project_description }}">
+
+                {% if project.project_img %}
+                    <div style="margin-top: 1em;">
+                        <p>Immagine attuale:</p>
+                        <img src="{{ url_for('static', filename='uploads/' + project.project_img) }}" alt="Immagine progetto" style="max-width: 300px;">
+                        <br>
+                        <button type="submit" name="delete_image" value="1" onclick="return confirm('Vuoi eliminare questa immagine?');">Elimina immagine</button>
+                    </div>
+                {% endif %}
+
+                <br><br>
+                <button type="submit">Salva modifiche</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

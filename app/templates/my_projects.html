@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+
+{% block head%}
+<title>User - La tua Home</title>
+{% endblock %}
+
+{% block body%}
+
+
+   
+    
+
+
+<h1>La tua Home</h1>
+<hr>
+<p>
+    Ciao {{ user.user_username|capitalize }} ecco i tuoi progetti:
+</p>
+<ul>
+    
+    {% for project in projects %}
+    <div class="project-card">
+        <h2>{{ project.project_name }}</h2>
+        <p><strong>Categoria:</strong> {{ project.project_category }}</p>
+        <p><strong>Descrizione:</strong> {{ project.project_description }}</p>
+        <p><strong>Creato il:</strong> {{ project.project_created }}</p>
+        <p><strong>Ultimo aggiornamento:</strong> {{ project.project_updated }}</p>
+        
+        {% if project.project_img %}
+            <img src="{{ url_for('static', filename='uploads/' ~ project.project_img) }}" class="project-img" alt="Immagine progetto">
+        {% endif %}
+
+        <form action="{{ url_for('auth.edit_project', project_id=project.project_id) }}" method="get" style="display:inline;">
+            <button type="submit">Modifica</button>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </form>
+        <br>
+        <br>
+        <form action="{{ url_for('auth.delete_project', project_id=project.project_id) }}" method="get" style="display:inline;">
+            <button type="submit">Elimina</button>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        </form>
+    </div>
+{% endfor %}
+</ul>
+
+{% endblock %}
+

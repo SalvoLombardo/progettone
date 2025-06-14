@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block head%}
+<title>User - La tua Home</title>
+{% endblock %}
+
+{% block body%}
+
+<h1>La tua Home</h1>
+<hr>
+<p>
+    Ciao {{ user.user_username|capitalize }}
+</p>
+<hr>
+
+
+<div style="display: flex; justify-content: center; gap: 20px;">
+    <form action="{{url_for('auth.my_projects')}}" method="get">
+        <button type="submit">Guarda i progetti</button>
+    </form>
+</div>
+
+<br> 
+
+<div style="display: flex; justify-content: center; gap: 20px;">
+    <form action="{{url_for('auth.add_project')}}" method="get">
+        <button type="submit">Aggiungi un progetto</button>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </form>
+</div>
+{% endblock %}
+

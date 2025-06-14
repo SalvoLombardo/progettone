@@ -1,0 +1,134 @@
+/* === Font e reset === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Navbar semplice === */
+.navbar {
+    background-color: #1e293b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.navbar .brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* === Contenitore centrale === */
+.container {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    max-width: 480px;
+    margin: 40px auto;
+}
+
+/* === Titoli === */
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+/* === Form === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1.8px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #6366f1;
+    outline: none;
+}
+
+/* === Pulsanti === */
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4f46e5;
+}
+
+/* === Flash message === */
+.flash {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin: 20px auto;
+    max-width: 480px;
+}
+
+/* === Cards per i progetti === */
+.project-card {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 600px;
+}
+
+.project-card h2 {
+    margin-top: 0;
+}
+
+.project-card img.project-img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}

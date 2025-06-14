@@ -1,0 +1,21 @@
+
+{% extends 'base.html'%}
+
+{% block head%}
+
+
+<title>CSRF Page </title>
+{% endblock %}
+
+{% block body%}
+<h1>CSRF</h1>
+<hr>
+
+<form method="POST">
+    {{ form.hidden_tag() }}  {# Qui viene inserito il token CSRF! #}
+    {{ form.nome.label }} {{ form.nome() }}
+    {{ form.submit() }}
+</form>
+{% endblock %}
+
+
