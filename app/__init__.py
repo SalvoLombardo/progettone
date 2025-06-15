@@ -18,14 +18,16 @@ def create_app():
     app = Flask(__name__)
     basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', f"sqlite:///{os.path.join(basedir, 'dev.db')}")
-    
 
-    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=10)  
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)  
     app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(days=30)
 
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret')
-    app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY', 'dev-jwt')
+    
+    from dotenv import load_dotenv
+    load_dotenv()  # Carica da .env
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
    
 
     app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.jpeg', '.png', '.gif']
@@ -37,6 +39,7 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
     from . import jwt_callbacks 
+
 
     csrf.init_app(app)
 
