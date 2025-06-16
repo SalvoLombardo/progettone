@@ -22,6 +22,7 @@ class Project(db.Model):
         return str(self.user_id)
      
 class User(db.Model, UserMixin):
+    __table_args__ = {'schema': 'public'}
     __tablename__='users'
     user_id = db.Column(db.Integer, primary_key=True)
     user_username = db.Column(db.String(150), unique=True, nullable=False)
