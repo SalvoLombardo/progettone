@@ -22,13 +22,13 @@ class Project(db.Model):
         return str(self.user_id)
      
 class User(db.Model, UserMixin):
-    __table_args__ = {'schema': 'public'}
+    
     __tablename__='users'
     user_id = db.Column(db.Integer, primary_key=True)
     user_username = db.Column(db.String(150), unique=True, nullable=False)
     user_password = db.Column(db.String(256), nullable=False)
     user_admin=db.Column(db.Boolean, nullable=False, default=False)
-    user_descriptin = db.Column(db.String(256))
+    user_description = db.Column(db.String(256))
     user_goals=db.Column(db.String(256))
     
 
